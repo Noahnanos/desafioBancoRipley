@@ -1,0 +1,25 @@
+
+.body{
+    height: 100vh;
+    .background-img{
+        background-color: #582d8a;
+    }
+    .logo-shadow{
+        box-shadow: 0 2px 12px 0 rgb(196 196 196 / 50%) !important;
+    }
+    .logo{
+        position: absolute;
+        top: 4%;
+        left: 7%;
+        width: 180px;
+        height: 50px;
+        background-size: 100%;
+    }
+    .card-title{
+        display: flex;
+        justify-content: center;
+        color: #673ab7;
+        font-weight: 500;
+    }
+    
+}
