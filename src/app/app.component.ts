@@ -30,6 +30,10 @@ export class AppComponent implements OnInit, OnDestroy{
     this.router.navigate(['/sign-in']);
   }
 
+  navigateToRecipient(){
+    this.router.navigate(['/portal/recipient']);
+  }
+
   isPortal(){
     return this.path.includes('portal');
   }

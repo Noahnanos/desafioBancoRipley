@@ -1,33 +1,30 @@
-<mat-toolbar *ngIf="!isPortal()" class="justify-content-between">
-    <span class="title fs-2 fw-bold">Mi Banco</span>
-    <div>
-        <button 
-            mat-raised-button color="accent" 
-            class="me-3"
-            (click)="navigateToSignIn()"
-            >Registrate!
-        </button>
-        <button 
-            mat-raised-button color="primary" 
-            class="me-3" 
-            (click)="navigateToLogin()"
-            >Ingresar!
-        </button>
+<mat-toolbar *ngIf="!isPortal()" class="row  justify-content-center">
+    <div class="col-8 d-flex justify-content-between">
+        <span class="title fs-2 fw-bold">Mi Banco</span>
+        <div>
+            <button 
+                mat-raised-button color="accent" 
+                class="me-3"
+                (click)="navigateToSignIn()"
+                >Registrarse
+            </button>
+            <button 
+                mat-raised-button color="primary" 
+                class="me-3" 
+                (click)="navigateToLogin()"
+                >Ingresar
+            </button>
+        </div>
     </div>
 </mat-toolbar>
 <mat-toolbar *ngIf="isPortal()" class="justify-content-around">
-    <span>Portal Mi Banco</span>
-    <div>
-        <button 
-            mat-raised-button 
-            color="accent" 
-            class="me-3"
-            >Agregar Destinatario
-        </button>
+    <span class="title fs-2 fw-bold">Portal Mi Banco</span>
+    <div class="d-flex">
+        <p class="mb-0 fs-6">Bienvenido Max Jara</p>
         <button 
             mat-raised-button color="primary" 
-            class="me-3">
-            Cerrar Sesión!
+            class="mx-3">
+            Cerrar Sesión
         </button>
     </div>
 </mat-toolbar>

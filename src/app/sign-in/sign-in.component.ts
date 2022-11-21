@@ -17,6 +17,7 @@ export class SignInComponent {
   rutFormControl = new FormControl('', [Validators.required]);
   nameFormControl = new FormControl('', [Validators.required]);
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  passwordFormControl= new FormControl('', [Validators.required]);
   matcher = new ErrorStateMatcher();
 
   

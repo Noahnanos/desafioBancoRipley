@@ -1,25 +1,21 @@
-
-.body{
+.body {
     height: calc(100vh - 64px);
-    .background-img{
-        background-color: #582d8a;
+    background-color: #582d8a;
+
+    .custom-bg {
+        background-color: rgb(248, 248, 248);
     }
-    .logo-shadow{
-        box-shadow: 0 2px 12px 0 rgb(196 196 196 / 50%) !important;
+
+    .custom-card{
+        box-shadow: 0 2px 12px 0 rgb(196 196 196 / 50%);
+
     }
-    .logo{
-        position: absolute;
-        top: 4%;
-        left: 7%;
-        width: 180px;
-        height: 50px;
-        background-size: 100%;
-    }
-    .card-title{
+
+    .card-title {
         display: flex;
         justify-content: center;
         color: #673ab7;
         font-weight: 500;
     }
-    
+
 }
