@@ -1,0 +1,81 @@
+<div>
+    <div class="body d-flex">
+        <div class="col-4 background-img">
+        </div>
+        <div class="col-8 d-flex justify-content-center align-items-center flex-column bg-light" style="--bs-bg-opacity: .5;">
+            <div class="col-8 form-container">
+                <div>
+                    <h1 class="card-title fw-bold">Nuevo Destinatario</h1>
+                </div>
+                <form>
+                    <div class="row">
+                        <mat-form-field appearance="fill" class="pt-2 col-6">
+                            <mat-label>Rut</mat-label>
+                            <input type="text" [formControl]="rutFormControl" placeholder="11111111-1" matInput>
+                            <mat-error *ngIf="rutFormControl.hasError('required')">
+                                El rut es <strong>requerido</strong>
+                                </mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill" class="pt-2 col-6">
+                            <mat-label>Nombre</mat-label>
+                            <input type="text" [formControl]="nameFormControl" matInput>
+                            <mat-error *ngIf="nameFormControl.hasError('required')">
+                                El nombre es <strong>requerido</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field class="pt-2 col-6">
+                            <mat-label>Email</mat-label>
+                            <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                                placeholder="ejemplo@ejemplo.com">
+                            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                                Ingresa un email <strong>valido</strong>
+                            </mat-error>
+                            <mat-error *ngIf="emailFormControl.hasError('required')">
+                                Email es <strong>requerido</strong>
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="pt-2 col-6">
+                            <mat-label>Teléfono</mat-label>
+                            <span matPrefix>+56-9 &nbsp;</span>
+                            <input type="tel" maxlength="8" matInput placeholder="99999999">
+                            <!-- <mat-icon matSuffix>mode_edit</mat-icon> -->
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field class="pt-2 col-6">
+                            <mat-label>Banco</mat-label>
+                            <mat-select>
+                                <mat-option *ngFor="let food of foods" [value]="food.value">
+                                    {{food.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="pt-2 col-6">
+                            <mat-label>Tipo de cuenta</mat-label>
+                            <mat-select>
+                                <mat-option *ngFor="let food of foods" [value]="food.value">
+                                    {{food.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field appearance="fill" class="pt-2 col-6">
+                            <mat-label>Número de cuenta</mat-label>
+                            <input type="number" [formControl]="nameFormControl" matInput>
+                            <mat-error *ngIf="nameFormControl.hasError('required')">
+                                Número de cuenta es <strong>requerido</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6"></div>
+                </form>
+                <div class="d-flex align-self-end justify-content-end pt-3">
+                    <button mat-raised-button color="primary">Agregar destinatario</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

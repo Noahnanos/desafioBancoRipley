@@ -1,6 +1,6 @@
 
 .body{
-    height: 100vh;
+    height: calc(100vh - 64px);
     .background-img{
         background-color: #582d8a;
     }
