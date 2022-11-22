@@ -20,8 +20,9 @@ export class LoginComponent {
     this.auth.login(this.rutFormControl.value!, this.passwordFormControl.value!)
       .subscribe((resp) => {
         console.log(resp)
-        this.router.navigate(['/home']);
+        this.router.navigate(['/portal/home']);
       });
   }
  }
+
 }

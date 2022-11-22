@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomePortalComponent } from './home-portal/home-portal.component';
 import { PortalComponent } from './portal.component';
 import { RecipientComponent } from './recipient/recipient.component';
+import { TransferHistoryComponent } from './transfer-history/transfer-history.component';
 import { TransferComponent } from './transfer/transfer.component';
 
 const routes: Routes = [
@@ -10,7 +11,9 @@ const routes: Routes = [
   children: [
     {path: '', component: HomePortalComponent},
     {path: 'recipient', component: RecipientComponent},
-    {path: 'transfer', component: TransferComponent}
+    {path: 'transfer', component: TransferComponent},
+    {path: 'history', component: TransferHistoryComponent}
+    
   ]
 },
 {path: '**', redirectTo: 'recipient'},

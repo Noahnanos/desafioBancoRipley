@@ -1,1 +1,37 @@
-<p>transfer works!</p>
+<div>
+    <div class="body row col-12 justify-content-center mx-0">
+        <div class="col-8 d-flex justify-content-center align-items-center flex-column bg-light">
+            <div class="col-8 form-container">
+                <div>
+                    <h1 class="card-title fw-bold">Nueva Transferencia</h1>
+                </div>
+                <form>
+                    <mat-form-field appearance="fill" class="pt-2 col-6">
+                        <mat-label>Buscar Destinatario</mat-label>
+                        <input type="text" [formControl]="finderFormControl" placeholder="Ingresa el rut del destinatario" matInput>
+                        <mat-error *ngIf="finderFormControl.hasError('required')">
+                            Tienes que buscar un <strong>destinatario</strong> para la transferencia
+                            </mat-error>
+                    </mat-form-field>
+                    <div class="pt-3">
+                        <h3 class="card-title fw-bold">Datos del Destinatario</h3>
+                        <p class="mb-0 text-secondary">Nombre:</p><span></span>
+                        <p class="mb-0 text-secondary">Correo:</p><span></span>
+                        <p class="mb-0 text-secondary">Banco:</p><span></span>
+                        <p class="mb-0 text-secondary">Tipo de cuenta:</p><span></span>
+                    </div>
+                    <mat-form-field appearance="fill" class="pt-5 col-6">
+                        <mat-label>Monto</mat-label>
+                        <input type="number" [formControl]="mountFormControl" matInput>
+                        <mat-error *ngIf="mountFormControl.hasError('required')">
+                            El monto es <strong>requerido</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </form>
+                <div class="d-flex align-self-end justify-content-end pt-3">
+                    <button mat-raised-button color="primary">Transferir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
