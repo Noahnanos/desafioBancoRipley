@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+import { UserService } from '../services/user.service';
 
 interface Food {
   value: string;
@@ -20,13 +21,23 @@ export class SignInComponent {
   passwordFormControl= new FormControl('', [Validators.required]);
   matcher = new ErrorStateMatcher();
 
-  
+  constructor(private userService:UserService){}
 
-  foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'},
-  ];
+  register(){
 
+    if (this.validForm()) {
+      this.userService.regitrarUsuario({
+        email: this.emailFormControl.value!,
+        rut: this.rutFormControl.value!,
+        username: this.nameFormControl.value!,
+        password: this.passwordFormControl.value!
+      });
+    }
+  }
+
+  validForm(){
+    return (this.rutFormControl.valid && this.nameFormControl.valid 
+     && this.emailFormControl.valid && this.passwordFormControl.valid);
+  }
  
 }

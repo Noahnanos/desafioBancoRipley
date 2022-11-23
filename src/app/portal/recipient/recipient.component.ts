@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { Bank } from 'src/app/interfaces/bank';
 import { BankService } from 'src/app/services/bank.service';
 
-interface Food {
+interface accountType {
   value: string;
   viewValue: string;
 }
@@ -33,5 +32,9 @@ export class RecipientComponent implements OnInit{
       banks.forEach((bank, i) => {this.banks.push({value: i, viewValue: bank.name})});
     });
   }
-  
+  accounts: accountType[] = [
+    {value: 'vista-1', viewValue: 'Cuenta Vista'},
+    {value: 'corriente-2', viewValue: 'Cuenta Corriente'},
+    {value: 'rut-3', viewValue: 'Cuenta Rut'},
+  ];
 }

@@ -19,8 +19,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {name: "max jara fierro", rut: '16314626-6', bank: "banco del desarrollo", countType: 'corriente', mount: 10000},
   {name: "max jara fierro", rut: '16314626-6', bank: "banco del desarrollo", countType: 'corriente', mount: 10000},
   {name: "max jara fierro", rut: '16314626-6', bank: "banco del desarrollo", countType: 'corriente', mount: 10000},
-  {name: "max jara fierro", rut: '16314626-6', bank: "banco del desarrollo", countType: 'corriente', mount: 10000},
-  {name: "max jara fierro", rut: '16314626-6', bank: "banco del desarrollo", countType: 'corriente', mount: 10000},
+  
+  
 ];
 
 @Component({

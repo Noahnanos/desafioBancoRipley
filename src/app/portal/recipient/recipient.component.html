@@ -1,5 +1,4 @@
-
- <div>
+<div>
     <div class="body row col-12 justify-content-center mx-0">
         <div class="col-8 d-flex justify-content-center align-items-center flex-column bg-light">
             <div class="col-8 form-container">
@@ -54,8 +53,8 @@
                         <mat-form-field class="pt-2 col-6">
                             <mat-label>Tipo de cuenta</mat-label>
                             <mat-select>
-                                <mat-option *ngFor="let bank of banks" [value]="bank.value">
-                                    {{bank.viewValue}}
+                                <mat-option *ngFor="let accountType of accounts" [value]="accountType.value">
+                                    {{accountType.viewValue}}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>

@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit,  } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,11 @@ export class AppComponent implements OnInit, OnDestroy{
 
   title = 'desafioBancoRipley';
 
-  constructor( private router: Router, private activatedRoute: ActivatedRoute){}
+  constructor( private router: Router, private activatedRoute: ActivatedRoute, private userService: UserService){}
+
+  getUser(){
+    return this.userService.getUser();
+  }
 
   ngOnInit(): void {
     this.subscriber = this.router.events.pipe(
@@ -24,6 +29,10 @@ export class AppComponent implements OnInit, OnDestroy{
 
   navigateToLogin(){
     this.router.navigate(['/login']);
+  }
+
+  logOut(){
+    this.userService.logout();
   }
 
   navigateToSignIn(){
