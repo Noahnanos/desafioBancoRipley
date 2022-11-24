@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Recipient } from '../interfaces/recipient';
 import { User } from '../interfaces/user.model';
 
 @Injectable({
@@ -14,19 +16,19 @@ export class UserService {
   constructor(
     private router: Router,
     private http: HttpClient,
-  ){
+  ) {
     const item = JSON.parse(localStorage.getItem('user') || '');
-    if(item) this.usuario = item;
+    if (item) this.usuario = item;
   }
 
-  getUser():User{
+  getUser(): User {
     return this.usuario;
   }
 
   regitrarUsuario(usr: User): void {
     this.http
       .post<User>(this.baseUrl + '/user/register', usr)
-      .subscribe((response:any) => {
+      .subscribe((response: any) => {
         this.usuario = response.user;
         localStorage.setItem('token', response.token);
         localStorage.setItem('user', JSON.stringify(this.usuario));
@@ -34,18 +36,28 @@ export class UserService {
       });
   }
 
-  login(rut:string, password: string): void {
+  login(rut: string, password: string): void {
     this.http
-      .post<User>(this.baseUrl + '/user/login', {rut, password})
-      .subscribe((response:any) => {
+      .post<User>(this.baseUrl + '/user/login', { rut, password })
+      .subscribe((response: any) => {
         this.usuario = response.user;
         localStorage.setItem('token', response.token);
         localStorage.setItem('user', JSON.stringify(this.usuario));
         this.router.navigate(['/portal']);
       });
   }
+  
+  regitrarDestinatario(recipient: Recipient): Observable<any> {
+    const body = {
+      id: this.usuario._id,
+      recipientAccount: recipient
+    }
 
-  logout(){
+    return this.http.post<Recipient>(this.baseUrl + '/account/addRecipients', body);
+  }
+
+
+  logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     this.router.navigate(['/home']);

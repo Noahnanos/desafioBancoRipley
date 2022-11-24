@@ -36,7 +36,7 @@
                         </mat-form-field>
                         <mat-form-field appearance="fill" class="pt-2 col-6">
                             <mat-label>Password</mat-label>
-                            <input type="text" [formControl]="passwordFormControl" matInput>
+                            <input type="password" [formControl]="passwordFormControl" matInput>
                             <mat-error *ngIf="passwordFormControl.hasError('required')">
                                 El password es <strong>requerido</strong>
                             </mat-error>

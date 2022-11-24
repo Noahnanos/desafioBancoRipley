@@ -37,41 +37,56 @@
                         <mat-form-field class="pt-2 col-6">
                             <mat-label>Teléfono</mat-label>
                             <span matPrefix>+56-9 &nbsp;</span>
-                            <input type="tel" maxlength="8" matInput placeholder="99999999">
-                            <!-- <mat-icon matSuffix>mode_edit</mat-icon> -->
+                            <input type="tel" maxlength="8" [formControl]="phoneFormControl" matInput placeholder="99999999">
+                            <mat-error *ngIf="phoneFormControl.hasError('required')">
+                                Télefono es <strong>requerido</strong>
+                            </mat-error>
                         </mat-form-field>
                     </div>
                     <div class="row">
                         <mat-form-field class="pt-2 col-6">
                             <mat-label>Banco</mat-label>
-                            <mat-select>
+                            <mat-select [formControl]="bankFormControl" [errorStateMatcher]="matcher">
                                 <mat-option *ngFor="let bank of banks" [value]="bank.value">
-                                    {{bank.viewValue}}
+                                    {{bank.value}}
                                 </mat-option>
                             </mat-select>
+                            <mat-error *ngIf="bankFormControl.hasError('required')">
+                                Debes elegir un <strong>banco</strong>
+                            </mat-error>
                         </mat-form-field>
                         <mat-form-field class="pt-2 col-6">
                             <mat-label>Tipo de cuenta</mat-label>
-                            <mat-select>
+                            <mat-select [formControl]="accountFormControl" [errorStateMatcher]="matcher">
                                 <mat-option *ngFor="let accountType of accounts" [value]="accountType.value">
-                                    {{accountType.viewValue}}
+                                    {{accountType.value}}
                                 </mat-option>
                             </mat-select>
+                            <mat-error *ngIf="accountFormControl.hasError('required')">
+                                Debes elegir un <strong>tipo de cuenta</strong>
+                            </mat-error>
                         </mat-form-field>
                     </div>
                     <div class="row">
                         <mat-form-field appearance="fill" class="pt-2 col-6">
                             <mat-label>Número de cuenta</mat-label>
-                            <input type="number" [formControl]="nameFormControl" matInput>
-                            <mat-error *ngIf="nameFormControl.hasError('required')">
+                            <input type="number" [formControl]="accountNumberFormControl" matInput>
+                            <mat-error *ngIf="accountNumberFormControl.hasError('required')">
                                 Número de cuenta es <strong>requerido</strong>
                             </mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-6"></div>
                 </form>
-                <div class="d-flex align-self-end justify-content-end pt-3">
-                    <button mat-raised-button color="primary">Agregar destinatario</button>
+
+                <div class="d-flex align-self-end justify-content-between  pt-3">
+                    <div *ngIf="showSuccess" class="d-flex align-items-center succsess-msg pe-5">
+                        <p class="mb-0">{{mensaje}}</p>
+                    </div>
+                    <div *ngIf="showFailure" class="d-flex align-items-center error-msg pe-5">
+                        <p class="mb-0">Debes completar todos los campos</p>
+                    </div>
+                    <button mat-raised-button color="primary" (click)="registerRecipient()">Agregar destinatario</button>
                 </div>
             </div>
         </div>

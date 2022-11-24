@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { PortalRoutingModule } from './portal-routing.module';
 import { PortalComponent } from './portal.component';
@@ -20,7 +19,6 @@ import { TransferHistoryComponent } from './transfer-history/transfer-history.co
     TransferHistoryComponent,
   ],
   imports: [
-    CommonModule,
     PortalRoutingModule,
     MaterialModule,
     ReactiveFormsModule
