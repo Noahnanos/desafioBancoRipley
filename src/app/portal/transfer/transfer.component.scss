@@ -3,6 +3,16 @@
     background-color: #582d8a;
     .card-title {
         color: #582d8a;
+        
+        .error-msg {
+            color: red;
+            font-weight: 700;
+        }
+    
+        .succsess-msg {
+            color: green;
+            font-weight: 700;
+        }
     }
 
     .form-container {
@@ -15,4 +25,6 @@
     .background-img {
         background-color: #582d8a;
     }
+
+    
 }

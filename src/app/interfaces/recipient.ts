@@ -5,5 +5,7 @@ export interface Recipient{
     phone:string,
     bank:string,
     accountType: string,
-    accountNumber:number
+    accountNumber:number,
+    balance?: number,
+    _id?:string
   }

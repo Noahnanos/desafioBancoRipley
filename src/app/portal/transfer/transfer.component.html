@@ -11,14 +11,26 @@
                         <input type="text" [formControl]="finderFormControl" placeholder="Ingresa el rut del destinatario" matInput>
                         <mat-error *ngIf="finderFormControl.hasError('required')">
                             Tienes que buscar un <strong>destinatario</strong> para la transferencia
-                            </mat-error>
+                        </mat-error>
                     </mat-form-field>
+                    <button mat-raised-button color="primary" type="button" class="ms-5" (click)="getRecipient()">Buscar</button>
+                    <div *ngIf="showFailure" >
+                        <p class="mb-0 text-danger fw-semibold">Error, el destinatario no se encuentra en tu lista</p>
+                    </div>
                     <div class="pt-3">
                         <h3 class="card-title fw-bold">Datos del Destinatario</h3>
-                        <p class="mb-0 text-secondary">Nombre:</p><span></span>
-                        <p class="mb-0 text-secondary">Correo:</p><span></span>
-                        <p class="mb-0 text-secondary">Banco:</p><span></span>
-                        <p class="mb-0 text-secondary">Tipo de cuenta:</p><span></span>
+                        <div class="d-flex">
+                            <p class="mb-0 me-2 fw-semibold text-secondary">Nombre:</p><span> {{ destinatario?.username }} </span>
+                        </div>
+                        <div class="d-flex">
+                            <p class="mb-0 me-2 fw-semibold text-secondary">Correo:</p><span> {{ destinatario?.email }} </span>
+                        </div>
+                        <div class="d-flex">
+                            <p class="mb-0 me-2 fw-semibold text-secondary">Banco:</p><span> {{ destinatario?.bank }} </span>
+                        </div>
+                        <div class="d-flex">
+                            <p class="mb-0 me-2 fw-semibold text-secondary">Tipo de cuenta:</p><span> {{ destinatario?.accountType }} </span>
+                        </div>
                     </div>
                     <mat-form-field appearance="fill" class="pt-5 col-6">
                         <mat-label>Monto</mat-label>
@@ -29,7 +41,13 @@
                     </mat-form-field>
                 </form>
                 <div class="d-flex align-self-end justify-content-end pt-3">
-                    <button mat-raised-button color="primary">Transferir</button>
+                    <div class="align-self-center" *ngIf="showSuccessTransfer" >
+                        <p class="mb-0 pe-5 text-success fw-semibold">La transferencia fue realizada con exito</p>
+                    </div>
+                    <div class="align-self-center" *ngIf="showFailureTransfer" >
+                        <p class="mb-0 pe-5 text-danger fw-semibold">La transferencia ha fallado.</p>
+                    </div>
+                    <button mat-raised-button color="primary" (click)="makeTransfer()">Transferir</button>
                 </div>
             </div>
         </div>
