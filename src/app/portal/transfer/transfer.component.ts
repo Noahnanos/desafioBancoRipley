@@ -30,8 +30,12 @@ export class TransferComponent {
         console.log(response)
         if (response.status === "ok"){
           this.showSuccessTransferMsg();
+          this.finderFormControl.reset();
+          this.mountFormControl.reset();
         }else{
           this.showFailureTransferMsg();
+          this.finderFormControl.reset();
+          this.mountFormControl.reset();
         }
       })
     }else{
@@ -46,11 +50,8 @@ export class TransferComponent {
          console.log(response)
          if (response.status === "ok") {
           this.destinatario = response.recipient;
-          this.finderFormControl.reset();
-          
          }else{
           this.showFailureMsg()
-          this.finderFormControl.reset();
          }
         })
     }else{

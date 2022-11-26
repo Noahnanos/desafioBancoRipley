@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: true,
-  url: "https://desafiobancoripleyback-production.up.railway.app/api",
+  production: false,
+  url: "http://localhost:3000/api",
   apiURL: "https://bast.dev/api/banks.php"
 };
 
