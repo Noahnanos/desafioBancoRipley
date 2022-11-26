@@ -13,12 +13,35 @@ import { UserService } from '../services/user.service';
 export class LoginComponent {
   rutFormControl = new FormControl('', [Validators.required]);
   passwordFormControl= new FormControl('', [Validators.required]);
-  
+  errorMsg: boolean = false;
+
   constructor(private auth:UserService, private router: Router,){}
 
  login(){
   if (this.rutFormControl.valid && this.passwordFormControl.valid) {
-    this.auth.login(this.rutFormControl.value!, this.passwordFormControl.value!);
-  }};
+    this.auth.login(this.rutFormControl.value!, this.passwordFormControl.value!)
+    .subscribe({
+      next: (response: any) => {
+        this.router.navigate(['/portal']); 
+      },
+      error: (error) => {
+        this.showFailureMsg();
+      }
+    });
+  }else{
+    this.markAsError();
+  }
+};
 
+  markAsError(){
+    !this.rutFormControl.value && this.rutFormControl.markAsTouched();
+    !this.passwordFormControl.value && this.passwordFormControl.markAsTouched();
+  }
+
+  showFailureMsg(){
+    this.errorMsg = true;
+    setTimeout(() => {
+      this.errorMsg = false;
+    }, 3000);
+  }
 }

@@ -47,7 +47,6 @@ export class RecipientComponent implements OnInit{
 
 
   registerRecipient(){
-    
     if (this.validForm()) {
       this.userService.regitrarDestinatario({
         username: this.nameFormControl.value!,

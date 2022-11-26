@@ -23,8 +23,10 @@
                                     </mat-error>
                                 </mat-form-field>
                             </form>
-                       
-                        <div class="align-self-end">
+                        <div class="align-self-end d-flex">
+                            <div class="align-self-center" *ngIf="errorMsg" >
+                                <p class="mb-0 pe-5 text-danger fw-semibold">Error al iniciar sesión.</p>
+                            </div>
                             <button mat-raised-button color="primary" (click)="login()">Ingresar</button>
                         </div>
                     </mat-card-content>

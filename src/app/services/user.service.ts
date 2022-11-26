@@ -1,10 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Recipient } from '../interfaces/recipient';
 import { User } from '../interfaces/user.model';
+
+
+const initialUser = {
+  username:"",
+  rut:"",
+  email:"",
+  password:""
+}
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +25,7 @@ export class UserService {
     private router: Router,
     private http: HttpClient,
   ) {
-    const item = JSON.parse(localStorage.getItem('user') || '');
+    const item = this.getLocalStorage() ? JSON.parse(this.getLocalStorage()!) : initialUser;
     if (item) this.usuario = item;
   }
 
@@ -25,26 +33,36 @@ export class UserService {
     return this.usuario;
   }
 
-  regitrarUsuario(usr: User): void {
-    this.http
-      .post<User>(this.baseUrl + '/user/register', usr)
-      .subscribe((response: any) => {
-        this.usuario = response.user;
-        localStorage.setItem('token', response.token);
-        localStorage.setItem('user', JSON.stringify(this.usuario));
-        this.router.navigate(['/portal']);
-      });
+  getLocalStorage(){
+    return localStorage.getItem('user');
   }
 
-  login(rut: string, password: string): void {
-    this.http
+  regitrarUsuario(usr: User): Observable<any> {
+    return this.http
+      .post<User>(this.baseUrl + '/user/register', usr)
+      .pipe(
+        tap((response: any) => {
+          if(response.status === "OK"){
+          this.usuario = response.user;
+          localStorage.setItem('token', response.token);
+          localStorage.setItem('user', JSON.stringify(this.usuario));
+        }
+        })
+      )
+    }    
+
+  login(rut: string, password: string): Observable<any> {
+    return this.http
       .post<User>(this.baseUrl + '/user/login', { rut, password })
-      .subscribe((response: any) => {
-        this.usuario = response.user;
-        localStorage.setItem('token', response.token);
-        localStorage.setItem('user', JSON.stringify(this.usuario));
-        this.router.navigate(['/portal']);
-      });
+      .pipe(
+        tap((response:any) => {
+          if (response.status === "OK") {
+            this.usuario = response.user;
+            localStorage.setItem('token', response.token);
+            localStorage.setItem('user', JSON.stringify(this.usuario));
+          }
+        })
+      )
   }
   
   regitrarDestinatario(recipient: Recipient): Observable<any> {

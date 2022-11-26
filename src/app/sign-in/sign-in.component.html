@@ -44,6 +44,9 @@
                     </div>
                 </form>
                 <div class="d-flex align-self-end justify-content-end pt-3">
+                    <div class="align-self-center" *ngIf="errorMsg" >
+                        <p class="mb-0 pe-5 text-danger fw-semibold">Error al registrar usuario.</p>
+                    </div>
                     <button mat-raised-button color="primary" (click)="register()">Crear cuenta</button>
                 </div>
             </div>
