@@ -22,6 +22,7 @@ export class LoginComponent {
     this.auth.login(this.rutFormControl.value!, this.passwordFormControl.value!)
     .subscribe({
       next: (response: any) => {
+        console.log('sas')
         this.router.navigate(['/portal']); 
       },
       error: (error) => {
