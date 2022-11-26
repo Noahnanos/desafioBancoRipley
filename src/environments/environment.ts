@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url: "http://localhost:3000/api",
+  url: "https://desafiobancoripleyback-production.up.railway.app/api",
   apiURL: "https://bast.dev/api/banks.php"
 };
 
